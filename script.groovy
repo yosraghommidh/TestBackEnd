@@ -13,7 +13,7 @@ def mvnsonarqube() {
 
 def JunitMockito() {
   echo "Testing the application..."
-  bat'mvn  test -DskipTests=true'
+  bat'mvn -Dtest=JwtServiceTest,HrPayCashDeskSessionServiceTest,HrPayCashDeskSessionControllerTestIntegration,DisAdmUserProfileControllerTestIntegration,HrPayCashDebtServiceTestMock,HrPartyControllerTestIntegration,SpringTestNGTest test '
   
 }
 def deploynexus() {
