@@ -100,6 +100,12 @@ public class SpringTestNGTest extends AbstractTestNGSpringContextTests {
 
         webDriver.quit();
     }
+    @AfterTest
+    public void quit() throws InterruptedException {
+        Thread.sleep(10000);
+
+        webDriver.quit();
+    }
 
     @BeforeClass(alwaysRun = true)
     @BeforeSuite(alwaysRun = true)
