@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -82,6 +83,12 @@ public class SpringTestNGTest extends AbstractTestNGSpringContextTests {
          WebElement serch= webDriver.findElement(By.id("serch"));
          serch.click();
        //mainPage.PerformLogin();
+    }
+    @AfterTest
+    public void quit() throws InterruptedException {
+        Thread.sleep(10000);
+
+        webDriver.quit();
     }
 
     @BeforeClass(alwaysRun = true)
