@@ -31,7 +31,10 @@ pipeline {
     stage("MVN SONARQUBE") {
       steps {
         script {
-          gv.mvnsonarqube()
+            withSonarQubeEnv('SonarQube'){
+                bat "mvn  clean verify sonar:sonar -Dsonar.projectKey=test -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_889a1bfdd45c3749f64b32b68907f1907234fae1"
+            }
+          
       }
     }
   }
@@ -42,12 +45,6 @@ pipeline {
    }
   }
  }
-  stage('NEXUS') {
-    steps {
-      script {
-        gv.deploynexus()
-        }
-      }
-    }
+  
   }
 }
