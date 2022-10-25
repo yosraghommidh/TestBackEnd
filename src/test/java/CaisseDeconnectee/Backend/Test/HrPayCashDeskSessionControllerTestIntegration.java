@@ -48,7 +48,7 @@ public class HrPayCashDeskSessionControllerTestIntegration {
 
 	    @Test
 	    @Order(1)
-	    public void testRetrieveStudentCourse() throws JSONException {
+	    public void testRetrieveSessionbyid() throws JSONException {
 
 	        HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
@@ -81,7 +81,7 @@ public class HrPayCashDeskSessionControllerTestIntegration {
 	    
 	    @Test
 	    @Order(2)
-		public void addCourse() {
+		public void addSession() {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"); 
 		
 			HrPayCashDesk caiss = caisseRepo.findById((long)1).get();
@@ -92,7 +92,6 @@ public class HrPayCashDeskSessionControllerTestIntegration {
 					HttpMethod.POST, entity, String.class);
 
 			HttpStatus actual = response.getStatusCode();
-			System.out.println("kharia"+actual);
 			Assertions.assertEquals(HttpStatus.CREATED, actual);
 
 		}

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -45,19 +46,15 @@ public class SpringTestNGTest extends AbstractTestNGSpringContextTests {
   
          WebElement txtUserName= webDriver.findElement(By.id("userName"));
          WebElement txtPassword=webDriver.findElement(By.id("userPassword"));
-         //webDriver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
          txtUserName.sendKeys("popo");
          Thread.sleep(3000);
 
-        // webDriver.manage().wait(2000);
          txtPassword.sendKeys("poo");
          Thread.sleep(3000);
 
-         //webDriver.manage().wait(2000);
-       //  webDriver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+         
          WebElement b =webDriver.findElement(By.id("bouton1"));
          b.click();
-       //mainPage.PerformLogin();
     }
     
     @Test
@@ -66,10 +63,6 @@ public class SpringTestNGTest extends AbstractTestNGSpringContextTests {
         Thread.sleep(3000);
 
         webDriver.get("http://localhost:4200/chef/dashboard");
-         //webDriver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-        // webDriver.manage().wait(2000);
-         //webDriver.manage().wait(2000);
-       //  webDriver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
          WebElement b =webDriver.findElement(By.id("fact"));
          b.click();
          Thread.sleep(3000);
@@ -81,7 +74,31 @@ public class SpringTestNGTest extends AbstractTestNGSpringContextTests {
 
          WebElement serch= webDriver.findElement(By.id("serch"));
          serch.click();
-       //mainPage.PerformLogin();
+    }
+    
+    @Test
+    @Order(3)
+    public void testpayer() throws InterruptedException {
+        Thread.sleep(3000);
+
+         WebElement b =webDriver.findElement(By.id("p"));
+         b.click();
+         Thread.sleep(3000);
+         WebElement ver= webDriver.findElement(By.id("v"));
+         ver.clear();
+         Thread.sleep(1000);
+         ver.sendKeys("100");
+         Thread.sleep(3000);
+         WebElement e =webDriver.findElement(By.id("encais"));
+         e.click();
+         
+
+    }
+    @AfterTest
+    public void quit() throws InterruptedException {
+        Thread.sleep(15000);
+
+        webDriver.quit();
     }
 
     @BeforeClass(alwaysRun = true)

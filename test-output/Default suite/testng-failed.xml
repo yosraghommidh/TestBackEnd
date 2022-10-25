@@ -7,8 +7,8 @@
         <methods>
           <include name="setupWebDriver"/>
           <include name="springTestContextBeforeTestClass"/>
+          <include name="testpayer"/>
           <include name="springTestContextBeforeTestMethod"/>
-          <include name="testfact"/>
           <include name="springTestContextAfterTestClass"/>
           <include name="springTestContextAfterTestMethod"/>
           <include name="springTestContextPrepareTestInstance"/>
